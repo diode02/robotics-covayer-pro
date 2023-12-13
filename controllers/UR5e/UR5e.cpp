@@ -107,20 +107,23 @@ int main(int argc, char **argv) {
         const CameraRecognitionObject *objects = camera->getRecognitionObjects();
         int numberOfObjects = camera->getRecognitionNumberOfObjects();
         std::cout<<"Number of objects: "<<numberOfObjects<<std::endl;
-        int i = 0;
-        // for (int i = 0; i < numberOfObjects; ++i) {
-        const double *colors = objects[i].colors;
-        std::cout<<"Color: "<<colors[0]<<" "<<colors[1]<<" "<<colors[2]<<std::endl;
-        // Assuming the first color in the array represents the object color
-        if (colors[0] == 1 && colors[1] == 0 && colors[2] == 0) { // Red
-          color = 1;
-        } if(colors[0] == 0 && colors[1] == 1 && colors[2] == 0) { // Green
-          color = 2;
-        } else if (colors[0] == 0 && colors[1] == 0 && colors[2] == 1) { // Blue
-          color = 3;
+        // int i = 0;
+        for (int i = 0; i < numberOfObjects; ++i) {
+          const double *colors = objects[i].colors;
+          std::cout<<"Color: "<<colors[0]<<" "<<colors[1]<<" "<<colors[2]<<std::endl;
+          //Assuming the first color in the array represents the object color
+          if (colors[0] == 1 && colors[1] == 0 && colors[2] == 0) { // Red
+            color = 1;
+            std::cout<<"Red Color 1: "<<color<<std::endl;
+          } if(colors[0] == 0 && colors[1] == 1 && colors[2] == 0) { // Green
+            color = 2;
+            std::cout<<"Green Color 2: "<<color<<std::endl;
+          } else if (colors[0] == 0 && colors[1] == 0 && colors[2] == 1) { // Blue
+            color = 3;
+            std::cout<<"Blue Color 3: "<<color<<std::endl;
+          }
         }
-        std::cout<<"Color: "<<color<<std::endl;
-        // }
+        
     }
     
     // 2)Rotating to goal
